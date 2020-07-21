@@ -12,11 +12,8 @@ import org.openqa.selenium.WebDriver;
 import org.apache.commons.io.FileUtils;
 
 public class Evidencia {
-    Date date = Calendar.getInstance().getTime();
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-    String strDate = dateFormat.format(date);
-    String data = strDate.replace(":","");
-    String pathAtual = System.getProperty("user.dir")+"//"+"Result"+"//"+data+"";
+
+    String pathAtual = System.getProperty("user.dir")+"//"+"Result";
     File diretorio = new File(pathAtual);
 
 
@@ -24,7 +21,7 @@ public class Evidencia {
 
         public  void capturar(WebDriver driver, String nomEvidencia){
             if (!diretorio.exists()) {
-                diretorio.mkdirs();
+                diretorio.mkdir();
             }
 
             try {

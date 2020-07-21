@@ -14,13 +14,14 @@ public class HomePage  {
 	Evidencia tela = new Evidencia();
 	Util util = new Util();
 	WebDriver driver = DriverFactory.getDriver("chrome");
-	By popup = By.xpath("/html/body/div[2]/a");
-	By iconBuscar = By.id("search-trigger");
+	By iconBuscar = By.xpath("//*[@id='search-trigger']");
 	By inputBuscar = By.id("global-search-input");
 	By btnBuscar = By.xpath("//*[@class='c-search-box__form']/button");
 	By tabResultado = By.xpath("//*[@class='c-search-page c-search-dropdown']/section");
-	By paginacao = By.xpath("//*[@class='o-pagination']/a");
+	By paginacao = By.xpath("//*[@class='o-pagination']");
+	By popup = By.xpath("");
 	By popResultado = By.xpath("//*[@class='o-modal is-modal-open']/div/div/div");
+	By menuHamburguer = By.className("c-menu-trigger__icon");
 
 	boolean result = false ;
 
@@ -28,12 +29,11 @@ public class HomePage  {
 	public  boolean digitaBusca(String texto) {
 
 		try {
-			util.click(driver, popup, 30);
-			tela.capturar(driver, "HomePage");
-
-			util.click(driver, iconBuscar, 10);
+			util.AguardaElementoDesaparecer(driver , menuHamburguer );
+			tela.capturar(driver, "1_HomePage");
+			util.clickJs(driver, iconBuscar, 10);
 			if (util.escrever(driver, inputBuscar, texto)) {
-				tela.capturar(driver, "Superget");
+				tela.capturar(driver, "2_Superget");
 
 			}
 			util.click(driver, btnBuscar, 10);
@@ -70,6 +70,8 @@ public class HomePage  {
 	public void setup(){
 		driver.navigate().to("https://site.getnet.com.br/");
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies(); //delete all cookies
+
 
 	}
 

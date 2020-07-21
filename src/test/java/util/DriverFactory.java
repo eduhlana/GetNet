@@ -42,6 +42,7 @@ public class DriverFactory {
                 ChromeOptions options = new ChromeOptions();
                 //options.addArguments("--headless");
                 System.setProperty("webdriver.chrome.driver", pathselenium);
+                options.setCapability("applicationCacheEnabled", "false");
                 System.out.println("Chrome driver: "+pathselenium);
                 driver = new ChromeDriver(options);                 
             }

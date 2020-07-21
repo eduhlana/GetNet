@@ -12,7 +12,6 @@ public class HomePage_steps  {
 
     @Given("que eu pesquisar por {string}")
     public void que_eu_pesquisar_por(String string) {
-        System.out.println("Buscando por " +string);
         assertTrue("true", home.digitaBusca(string));
     }
 
